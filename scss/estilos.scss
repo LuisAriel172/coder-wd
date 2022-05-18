@@ -1,25 +1,32 @@
-div {
-    color: #000;
-}
+
+// div {
+//     color: #000;
+// }
 
 //Operaciones
-$spacing: 4px;
+// $spacing: 4px;
 
-div {
-    padding: $spacing * 2;
-}
+// div {
+//     padding: $spacing * 2;
+// }
 
-//Condicionales
-$animal: perro;
+// //Condicionales
+// $animal: perro;
 
-div {
-    @if $animal == gato {
-        color: black;
-    } @else if $animal != gato {
-        color: red;
-    }
-}
+// div {
+//     @if $animal == gato {
+//         color: black;
+//     } @else if $animal != gato {
+//         color: red;
+//     }
+// }
+$color-basico: #3d85c6;
+$color-capital: #64b5f3;
+$color-ybuena:#85cc62;
+$color-sur: #5ad4ce;
+$color-grad:#d5eec3;
 
+$fuente-slogan: 'Zhi Mang Xing', cursive;
 // Bucles
 @for $i from 1 to 7 {
 
@@ -37,60 +44,144 @@ $lista-colores: red, green, yellow, blue;
 }
 
 // Mapas
-$redes: (
-    twitter: #0084ff,
-    facebook: #062644,
-    instagram: #c34e9a
+// $redes: (
+//     twitter: #0084ff,
+//     facebook: #062644,
+//     instagram: #c34e9a
+// );
+
+// @each $red, $color in $redes {
+//     .red-#{$red} {
+//         color: $color;
+//     }
+// }
+
+$backg-suc: (
+    capital: linear-gradient(to bottom, $color-capital 0%, $color-grad 100%),
+    ybuena: linear-gradient(to bottom, $color-ybuena 0%, $color-grad 100%),  
+    sur: linear-gradient(to bottom, $color-sur 0%, $color-grad 100%)
 );
 
-@each $red, $color in $redes {
-    .red-#{$red} {
-        color: $color;
+@each $sucu, $col-sucu in $backg-suc {
+    .suc-#{$sucu} {
+        background: $col-sucu;
     }
 }
 
-//Extend
-.boton {
-    border: solid 2px;
-    padding: 10px 15px;
-    margin: 5px;
-}
 
-.boton-primario {
+.contenedor-sucursal {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+    font-size: 20px; }
+.sucursal {
+    display: grid;
+    grid-template-areas: "nombre"
+   "datos"
+   "foto"
+   "mapa"; }
+
+   
+  .nombre {
+    grid-area: nombre; }
+  
+  .datos {
+    grid-area: datos; }
+  
+  .foto {
+    grid-area: foto; }
+  
+  .mapa {
+    grid-area: mapa; }
+  
+  .nombre, .datos, .foto, .mapa {
+    padding: 5px;
+    text-align: center; }
+  
+  /* Gradientes diferenciando capital de provincia */
+//   .roca, .alem, .ybuena {
+//     background: linear-gradient(to bottom, $color-capital 0%, $color-grad 100%); }
+  
+//   .concepcion, .aguilares, .alberdi {
+//     background: linear-gradient(to bottom, $color-sur 0%, $color-grad 100%); }
+  
+//Extend
+// .boton {
+//     border: solid 2px;
+//     padding: 10px 15px;
+//     margin: 5px;
+// }
+
+// .boton-primario {
+//     @extend .boton;
+//     border-color: red;
+//     background-color: red;
+// }
+/* BOTONES */
+.boton {
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 20px; }
+  
+.boton-contacto {
     @extend .boton;
-    border-color: red;
-    background-color: red;
-}
+    background-color: #2a91f1; }
+
+.imagen-contacto {
+        grid-area: imagen-contacto;
+        background-image: url(../img/presupuesto.jpg);
+        background-position: center center;
+        background-size: cover;
+        height: 20rem; }
+      
+      .contenido-contacto {
+        color: blue;
+        padding: 10px; }
+        .contenido-contacto h2 {
+          font-size: 1.5rem; }
+        .contenido-contacto p {
+          font-size: 1rem;
+          margin: 20px;
+          padding: 20px; }
+
+
 
 //Mixins: Similar al extend, pero sin agregar la clase
-//se usa mucho para las claes de tipografia
+//se usa mucho para las clases de tipografia
 //FORMA 1
 @mixin size ($alto, $ancho, $espaciado) {
     height: $alto;
     width: $ancho;
     margin: $espaciado;
 }
-
-div{
-    @include size (2px, 5px, 10px);
-    text-align: center;
-    display: flex;
+.prueba {
+    @include size (270px, 310px, 1px)
 }
+
+
+
+
+// div{
+//     @include size (2px, 5px, 10px);
+//     text-align: center;
+//     display: flex;
+// }
 
 //FORMA 2
-@mixin size-2  {
-    height: 20px;
-    width: 20px;
-    margin: 5px 15px 2px 25px;
+// @mixin size-2  {
+//     height: 20px;
+//     width: 20px;
+//     margin: 5px 15px 2px 25px;
     
-}
+// }
 
-div{
-    @include size-2;
-    text-align:center;
-    display: flex;
-    flex-direction: row;
-}
+// div{
+//     @include size-2;
+//     text-align:center;
+//     display: flex;
+//     flex-direction: row;
+// }
 
 
 //Para propiedades que se repiten mucho, se aplica mixin o extend
