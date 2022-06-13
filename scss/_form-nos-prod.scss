@@ -1,0 +1,59 @@
+/* FORMULARIO */
+form {
+    margin: 0 auto;
+    padding: 20px;
+    width: 300px;
+    background-color: #abd8e5;
+    border-radius: 10px; }
+  
+  input,
+  textarea,
+  label {
+    padding: 5px; }
+  
+  /* PAGINA NOSOTROS */
+  .nos-main {
+    display: grid;
+    grid-template-areas:
+        'identidad'
+        'nos-intro'
+        'xp';
+}
+
+.identidad {
+  grid-area: identidad;
+  padding: 60px 0;
+  
+  p {
+    padding: 0 20px;
+  }
+  
+  img {
+    margin-top: 20px;
+    }
+} 
+.nos-intro {
+  grid-area: nos-intro;
+  background: $color-grad;
+  // max-width: 900px;
+  margin:auto;
+  line-height: 50px;
+  padding: 48px;
+}
+
+.xp {
+  grid-area: xp;
+  padding: 48px;
+}
+.card-nos{
+  width: 26rem;
+ }
+  
+  /* PAGINA PRODUCTOS */
+  .marca {
+    grid-area: marca;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4rem; }
+  
